@@ -61,8 +61,8 @@ router.get("/stream/:id", async (req, res, next) => {
       data.sources === null
         ? null
         : data.sources.find((item) => item.quality === "default") ||
-          data.sources[0].url ||
-          null;
+        data.sources[0].url ||
+        null;
     const bkstrm =
       data.sources === null
         ? null
@@ -87,24 +87,24 @@ router.get("/stream/:id", async (req, res, next) => {
           data.sources === null
             ? null
             : {
-                main: `https://plyr.link/p/player.html#${base64encode(
-                  mainstrm.url
-                )}`,
-                backup: `https://plyr.link/p/player.html#${base64encode(
-                  bkstrm.url
-                )}`,
-              },
+              main: `https://plyr.link/p/player.html#${base64encode(
+                mainstrm.url
+              )}`,
+              backup: `https://plyr.link/p/player.html#${base64encode(
+                bkstrm.url
+              )}`,
+            },
         nspl:
           data.sources === null
             ? null
             : {
-                main: `https://nspl.nyt92.eu.org/player?p=${base64encode(
-                  `&title=${id}&file=${mainstrm.url}&thumbnails=${dtatrack.file}`
-                )}`,
-                backup: `https://nspl.nyt92.eu.org/player?p=${base64encode(
-                  `&title=${id}&file=${bkstrm.url}&thumbnails=${dtatrack.file}`
-                )}`,
-              } || null,
+              main: `https://nspl.nyt92.eu.org/player?p=${base64encode(
+                `&title=${id}&file=${mainstrm.url}&thumbnails=${dtatrack.file}`
+              )}`,
+              backup: `https://nspl.nyt92.eu.org/player?p=${base64encode(
+                `&title=${id}&file=${bkstrm.url}&thumbnails=${dtatrack.file}`
+              )}`,
+            } || null,
       })
     );
   } catch (error) {
@@ -120,13 +120,13 @@ router.get("/stream/skiptime/:id/:ep_id", async (req, res, next) => {
     }
     const dataSkT = data.results
       ? {
-          op: data.results.find((item) => item.skipType === "op"),
-          ed: data.results.find((item) => item.skipType === "ed"),
-        }
+        op: data.results.find((item) => item.skipType === "op"),
+        ed: data.results.find((item) => item.skipType === "ed"),
+      }
       : {
-          op: null,
-          ed: null,
-        };
+        op: null,
+        ed: null,
+      };
     res.status(200).json(
       successRes(200, "success", {
         found: data.found,
