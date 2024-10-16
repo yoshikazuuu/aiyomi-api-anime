@@ -12,6 +12,6 @@ ENV NODE_ENV=production
 
 # add an healthcheck, useful
 # healthcheck with curl, but not recommended
-HEALTHCHECK CMD curl --fail http://localhost:3000/health || exit 1
+HEALTHCHECK CMD curl --fail http://localhost:8080 || exit 1
 
 CMD ["bun", "start"]
